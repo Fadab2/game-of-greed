@@ -27,3 +27,4 @@ Actual time needed to complete: 3hr 10min
 
 ## Credit and Collaborations
 Help was acquired from these articles to get a better understanding
+Got help from Clarissa and Connor on the banker logic. 

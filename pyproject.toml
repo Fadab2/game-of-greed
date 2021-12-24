@@ -7,6 +7,7 @@ authors = ["Edris <ali_berg1@yahoo.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 pytest = "^6.2.5"
+coverage = "^6.2"
 
 [tool.poetry.dev-dependencies]
 
