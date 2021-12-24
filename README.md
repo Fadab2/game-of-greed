@@ -2,7 +2,7 @@
 
 **Author**: Alex Payne and Edris Berg
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
-**PR**: https://github.com/DrPayne25/math-series/pull/1
+**PR**: https://github.com/Fadab2/game-of-greed/pull/2
 
 ## Overview
 This will be a game dice based game that will give you a score based on the roll of six dice. After each roll you will have the option to bank the points you earned or roll again to get more points. If your roll doesn't get any points it will end the game. 
@@ -26,4 +26,4 @@ Actual time needed to complete: 3hr 10min
 
 
 ## Credit and Collaborations
-Help was acquired from these articles to get a better understanding:
+Help was acquired from these articles to get a better understanding
