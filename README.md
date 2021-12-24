@@ -24,6 +24,17 @@ Finish time: 7:30, 9
 
 Actual time needed to complete: 3hr 10min
 
+Name of feature: Banker
+
+Estimate of time needed to complete: 1hr
+
+Start time: 9
+
+Finish time: 10
+
+Actual time needed to complete: 1hr
+
+
 
 ## Credit and Collaborations
 Help was acquired from these articles to get a better understanding
