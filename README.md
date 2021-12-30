@@ -1,7 +1,7 @@
 # Lab 06 Game of Greed 
 
 **Author**: Alex Payne and Edris Berg
-**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+**Version**: 1.2.0 (increment the patch/fix version number if you make more commits past your first submission)
 **PR**: https://github.com/Fadab2/game-of-greed/pull/2
 
 ## Overview
@@ -33,6 +33,18 @@ Start time: 9
 Finish time: 10
 
 Actual time needed to complete: 1hr
+
+Name of feature: Game V1
+
+Estimate of time needed to complete: 2hr
+
+Start time: 6:30
+
+Finish time: 9:38
+
+Actual time needed to complete: 3hr 8min
+
+
 
 
 
