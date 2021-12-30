@@ -56,7 +56,7 @@ game_logic_dict = {
 
 class GameLogic:
 
-    @staticmethod
+    @staticmethod # staticmethod doesn't belong to a single instance
     def roll_dice(rolled_dice):
         dice_list = []
         for _ in range(rolled_dice):
