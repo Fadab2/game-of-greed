@@ -1,4 +1,5 @@
 import collections
+from math import pi
 import random
 from collections import Counter
 
@@ -55,9 +56,9 @@ game_logic_dict = {
 
 
 class GameLogic:
-
+    count_dices = 0
     @staticmethod # staticmethod doesn't belong to a single instance
-    def roll_dice(rolled_dice):
+    def roll_dice(rolled_dice=None):
         dice_list = []
         for _ in range(rolled_dice):
             dice_list.append(random.randint(1,6))
@@ -93,8 +94,35 @@ class GameLogic:
 
         return score
     
+    @staticmethod
+    def choose_dice(rolled_dice):
+        store_dice = []
+        picked_value = input("Enter dice to keep, or (q)uit:")
+    
+       
+        for char in picked_value:
+            store_dice.append(char)
+            
+        d = Counter(rolled_dice)
+        for dice in d.elements():
+            if dice in store_dice:
+               print(dice)
+               
+            # if len(d):
+            #    
+            #     if picked_value == 'q':
+            #         print("Thanks for playing. You earned 0 points")
+            #     # 4 2 6 4 5 5
+            #     get_to_keep = GameLogic.calculate_score(picked_value)
+            #     print("get to keep", get_to_keep)
+            #     # we need to subtract the picked up dices from the length (roll the remaining dices)
+            #     dices_on_hand = len(store_dice) - len(get_to_keep)
+            #     print(f'You have {get_to_keep} unbanked points and {dices_on_hand} dice remaining')
+            #     print("(r)oll again, (b)ank your points or (q)uit:")
 
+    
 
 if __name__ == "__main__":
 
     print(GameLogic.calculate_score((2,1,4,3,6,5)))
+    GameLogic.choose_dice((2,1,4,5,6,5))

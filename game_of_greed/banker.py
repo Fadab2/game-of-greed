@@ -7,8 +7,9 @@ class Banker:
         self.shelved += num
     
     def bank(self):
-        self.balance = self.shelved
+        self.balance += self.shelved #incrememented balance
         self.shelved = 0
+        return self.balance
 
     def clear_shelf(self):
         self.shelved = 0
