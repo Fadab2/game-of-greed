@@ -94,19 +94,25 @@ class GameLogic:
 
         return score
     
-    @staticmethod
-    def choose_dice(rolled_dice):
-        store_dice = []
-        picked_value = input("Enter dice to keep, or (q)uit:")
-    
-       
-        for char in picked_value:
-            store_dice.append(char)
+    # @staticmethod
+    # def choose_dice(rolled_dice):
+    #     store_dice = []
+    #     picked_value = input("Enter dice to keep, or (q)uit:")
+    #     for char in picked_value:
+    #         store_dice.append(char)
+    #     if picked_value == 'q':
+    #       print("Thanks for playing. You earned 0 points")  
+    #     elif picked_value in store_dice:
+    #         # store_dice.append(picked_value)
+    #         print(store_dice)
+    #     elif picked_value not in store_dice:
+    #         print('Picked Dice is not a valid dice')
+
             
-        d = Counter(rolled_dice)
-        for dice in d.elements():
-            if dice in store_dice:
-               print(dice)
+        # d = Counter(rolled_dice)
+        # for dice in d.elements():
+        #     if dice in store_dice:
+        #        print(dice)
                
             # if len(d):
             #    
@@ -124,5 +130,5 @@ class GameLogic:
 
 if __name__ == "__main__":
 
-    print(GameLogic.calculate_score((2,1,4,3,6,5)))
+    # print(GameLogic.calculate_score((2,1,4,3,6,5)))
     GameLogic.choose_dice((2,1,4,5,6,5))
