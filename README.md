@@ -44,6 +44,15 @@ Finish time: 9:38
 
 Actual time needed to complete: 3hr 8min
 
+Name of feature: Game V2
+
+Estimate of time needed to complete: 5hr
+
+Start time: 6:10
+
+Finish time: 
+
+Actual time needed to complete: 3hr 8min
 
 
 

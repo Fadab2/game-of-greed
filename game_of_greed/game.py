@@ -56,7 +56,6 @@ class Game:
                 list_of_choices = tuple(map(int, list(choice)))
                 self.amount_of_dice -= len(list_of_choices)
                 score = GameLogic.calculate_score(list_of_choices)
-                print(f'score: {score}')
                 self.banker.shelf(score)
                 print(f'You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining')
                 print(f'(r)oll again, (b)ank your points or (q)uit:')
@@ -75,11 +74,12 @@ class Game:
                     self.quiter()
                     break
 
-                # 
+                # These were the print statements we used along the way to ge the code working again 
                 # print(f'list of respones: {list_of_respones}')
                 # print(len(f'roll: {roll}'))
                 # print(f'old amount of dice: {self.amount_of_dice}')
                 # print(f'new amount of dice: {self.amount_of_dice}')
+                # print(f'score: {score}')
 
 if __name__ == '__main__':
     run = Game()
