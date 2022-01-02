@@ -2,7 +2,7 @@
 
 **Author**: Alex Payne and Edris Berg
 **Version**: 1.2.0 (increment the patch/fix version number if you make more commits past your first submission)
-**PR**: https://github.com/Fadab2/game-of-greed/pull/2
+**PR**: Lab: 06 https://github.com/Fadab2/game-of-greed/pull/2 Lab:07 https://github.com/Fadab2/game-of-greed/pull/10
 
 ## Overview
 This will be a game dice based game that will give you a score based on the roll of six dice. After each roll you will have the option to bank the points you earned or roll again to get more points. If your roll doesn't get any points it will end the game. 
@@ -50,7 +50,7 @@ Estimate of time needed to complete: 5hr
 
 Start time: 6:10
 
-Finish time: 
+Finish time: 7:50
 
 Actual time needed to complete: 3hr 8min
 
@@ -60,3 +60,4 @@ Actual time needed to complete: 3hr 8min
 ## Credit and Collaborations
 Help was acquired from these articles to get a better understanding
 Got help from Clarissa and Connor on the banker logic. 
+Help from Brandon and Eddie on the game.py 
