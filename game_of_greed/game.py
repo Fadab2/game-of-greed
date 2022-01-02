@@ -1,6 +1,8 @@
 
 from random import choice
+# from game_of_greed.game_logic import GameLogic
 from game_logic import GameLogic
+# from game_of_greed.banker import Banker
 from banker import Banker
 
 
@@ -61,9 +63,9 @@ class Game:
                 choice = input("> ")
 
                 if choice == 'b' or choice == 'bank':
+                    print(f'You banked {self.banker.shelved} points in round {self.rounds}')
                     self.banker.bank()
                     self.amount_of_dice = 6
-                    print(f'You banked {self.banker.shelved} points in round {self.rounds}')
                     print(f'Total score is {self.banker.balance} points')
 
                 elif choice == 'r' or choice == 'roll':
