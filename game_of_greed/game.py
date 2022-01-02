@@ -68,7 +68,10 @@ class Game:
                     print(f'Total score is {self.banker.balance} points')
 
                 elif choice == 'r' or choice == 'roll':
-                    pass
+                    if len(roll) == 0:
+                        print("No dice remaing. Staring over")
+                        self.amount_of_dice == 6
+                    continue
 
                 elif choice == 'q' or choice == 'quit':
                     self.quiter()
