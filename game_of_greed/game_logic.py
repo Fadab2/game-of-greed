@@ -4,6 +4,8 @@ from math import pi
 import random
 from collections import Counter
 
+from attr import s
+
 game_logic_dict = {
     1: {
         1:100, 
@@ -95,14 +97,27 @@ class GameLogic:
 
         return score
     
+    @staticmethod
     def validate_keepers(roll, keepers):
         keeper_counter = Counter(keepers)
         roll_counter = Counter(roll)
         results = keeper_counter - roll_counter # 1:3,2:1,4:1,5:1 # 1:3 = 2 4 5 not result 
         return not results
+    
+    @staticmethod
+    def get_scorers(dice):
+        total_score = GameLogic.calculate_score(dice)
+        if total_score == 0:
+            return tuple()
+        list_of_scores = []
+        for number in range(len(dice)):
+            rolls = dice[:number] + dice[number + 1:]
+            score = GameLogic.calculate_score(rolls)
+            if score != total_score:
+                list_of_scores.append(dice[number])
+        return tuple(list_of_scores)
+
 
 
 if __name__ == "__main__":
-
-    # print(GameLogic.calculate_score((2,1,4,3,6,5)))
     GameLogic.choose_dice((2,1,4,5,6,5))
