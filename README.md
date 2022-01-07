@@ -54,6 +54,16 @@ Finish time: 7:50
 
 Actual time needed to complete: 3hr 8min
 
+Name of feature: Game V3
+
+Estimate of time needed to complete: 7hr
+
+Start time: 6:30, 7:30
+
+Finish time: 9:30, 10:12
+
+Actual time needed to complete: 5hr 48min
+
 
 
 
