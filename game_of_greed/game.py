@@ -3,9 +3,8 @@ import collections
 from typing import Counter
 from random import choice
 from game_of_greed.game_logic import GameLogic
-#from game_logic import GameLogic
 from game_of_greed.banker import Banker
-#from banker import Banker
+
 
 
 class Game:
@@ -44,7 +43,7 @@ class Game:
             roll = roller(self.amount_of_dice) #check this out
             # get the count of each number in the current roll
             roll_counts = collections.Counter(roll)
-            print(roll_counts)
+            # print(roll_counts)
             roller_str = ''
             for num in roll:
                 roller_str += str(num) + " "
@@ -62,17 +61,17 @@ class Game:
             else:
                 list_of_choices = tuple(map(int, list(choice)))
                 count_choices = collections.Counter(list_of_choices)
-                print(count_choices)
+                # print(count_choices)
                 self.amount_of_dice -= len(list_of_choices)
-                # add dice verification and its quantity
-                for dice in count_choices: #  roll_score= Counter({2: 2, 5: 1, 6: 1}) count_choices: Counter({5: 1})
-                    if dice not in [roll_score]:
-                        print(roll)
-                        print("Cheater!!! Or possibly made a typo...")
-                
-                # calculate to dices to keep score
                 to_keep_score = GameLogic.calculate_score(list_of_choices)
                 self.banker.shelf(to_keep_score)
+                # add dice verification and its quantity
+                # for dice in count_choices: #  roll_score= Counter({2: 2, 5: 1, 6: 1}) count_choices: Counter({5: 1})
+                    # if dice not in [roll_score]:
+                    #     print(roll)
+                    #     print("Cheater!!! Or possibly made a typo...")
+                
+                # calculate to dices to keep score
                 print(f'You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining')
                 print(f'(r)oll again, (b)ank your points or (q)uit:')
                 choice = input("> ")
