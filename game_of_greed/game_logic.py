@@ -1,4 +1,5 @@
 import collections
+import sys
 from math import pi
 import random
 from collections import Counter
@@ -75,7 +76,7 @@ class GameLogic:
         score_values = game_logic_dict
         score = 0
         pairs = 0
-        counts = collections.Counter(roll_dice)
+        counts = collections.Counter(roll_dice) # {1:2, 3:2, 6:1, 5:1}, 
         '''This first if statement will handle if we get a straight for the dice'''
         if len(counts) == 6:
             score += 1500
@@ -94,39 +95,12 @@ class GameLogic:
 
         return score
     
-    # @staticmethod
-    # def choose_dice(rolled_dice):
-    #     store_dice = []
-    #     picked_value = input("Enter dice to keep, or (q)uit:")
-    #     for char in picked_value:
-    #         store_dice.append(char)
-    #     if picked_value == 'q':
-    #       print("Thanks for playing. You earned 0 points")  
-    #     elif picked_value in store_dice:
-    #         # store_dice.append(picked_value)
-    #         print(store_dice)
-    #     elif picked_value not in store_dice:
-    #         print('Picked Dice is not a valid dice')
+    def validate_keepers(roll, keepers):
+        keeper_counter = Counter(keepers)
+        roll_counter = Counter(roll)
+        results = keeper_counter - roll_counter # 1:3,2:1,4:1,5:1 # 1:3 = 2 4 5 not result 
+        return not results
 
-            
-        # d = Counter(rolled_dice)
-        # for dice in d.elements():
-        #     if dice in store_dice:
-        #        print(dice)
-               
-            # if len(d):
-            #    
-            #     if picked_value == 'q':
-            #         print("Thanks for playing. You earned 0 points")
-            #     # 4 2 6 4 5 5
-            #     get_to_keep = GameLogic.calculate_score(picked_value)
-            #     print("get to keep", get_to_keep)
-            #     # we need to subtract the picked up dices from the length (roll the remaining dices)
-            #     dices_on_hand = len(store_dice) - len(get_to_keep)
-            #     print(f'You have {get_to_keep} unbanked points and {dices_on_hand} dice remaining')
-            #     print("(r)oll again, (b)ank your points or (q)uit:")
-
-    
 
 if __name__ == "__main__":
 
