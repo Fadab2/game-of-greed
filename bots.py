@@ -186,5 +186,5 @@ if __name__ == "__main__":
     # MiddlingMargaret.play(num_games)
     # Roger.play(num_games)
     # DaringDarla.play(num_games)
-    WinnerBot.play(num_games)
-    TestBot.play(num_games)
+    # WinnerBot.play(num_games)
+    # TestBot.play(num_games)
