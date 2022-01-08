@@ -5,14 +5,14 @@ from game_of_greed.game import Game
 
 pytestmark = [pytest.mark.version_3]
 
-@pytest.mark.skip('Pending')
+#@pytest.mark.skip('Pending')
 def test_repeat_roller():
     """Allow setting aside scoring dice and rolling the rest
     """
     diffs = diff(Game().play, path="tests/version_3/repeat_roller.sim.txt")
     assert not diffs, diffs
 
-@pytest.mark.skip('Pending')
+#@pytest.mark.skip('Pending')
 def test_hot_dice():
     """When all dice are used without a zilch
     then user gets 6 fresh dice and continues turn.
