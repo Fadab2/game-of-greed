@@ -6,13 +6,11 @@ from game_of_greed.game_logic import GameLogic
 from game_of_greed.banker import Banker
 
 
-
 class Game:
     def __init__(self):
         self.banker = Banker()
-        self.rounds = 0
+        self.rounds = 1
         self.amount_of_dice = 6
-
 
     def default_roller(self):
         return GameLogic.roll_dice(self.amount_of_dice)
@@ -26,28 +24,27 @@ class Game:
     def play(self, roller=GameLogic.roll_dice):
         print("Welcome to Game of Greed")
         print("(y)es to play or (n)o to decline")
-        response = input('> ')
+        response = input("> ")
 
-        if response == 'n' or response == 'no':
+        if response == "n" or response == "no":
             print("OK. Maybe another time")
-        elif response == 'y' or response == 'yes':
+        elif response == "y" or response == "yes":
             self.play_game(roller)
 
     def play_game(self, roller):
+        print(f"Starting round {self.rounds}")
         while True:
-            self.rounds += 1
 
-            print(f'Starting round {self.rounds}')
-            print(f'Rolling {self.amount_of_dice} dice...')
+            print(f"Rolling {self.amount_of_dice} dice...")
 
-            roll = roller(self.amount_of_dice) #check this out
+            roll = roller(self.amount_of_dice)  # check this out
             # get the count of each number in the current roll
             roll_counts = collections.Counter(roll)
             # print(roll_counts)
-            roller_str = ''
+            roller_str = ""
             for num in roll:
                 roller_str += str(num) + " "
-            print(f'*** {roller_str}***')
+            print(f"*** {roller_str}***")
             # total current roll score
             roll_score = GameLogic.calculate_score(roll)
             if roll_score > 0:
@@ -60,46 +57,60 @@ class Game:
 
             else:
                 list_of_choices = tuple(map(int, list(choice)))
-                count_choices = collections.Counter(list_of_choices)
+                roll_counter = Counter(roll)
+                count_choices = Counter(choice)
+                # print(f' roll counter {roll_counter} choice count: {count_choices}')
+                # in_it = roll_counter & count_choices
+                # print(in_it)
+                # if count_choices > roll_counter:
+                #     print("Cheater!!! Or possibly made a typo...")
+                
                 # print(count_choices)
                 self.amount_of_dice -= len(list_of_choices)
                 to_keep_score = GameLogic.calculate_score(list_of_choices)
                 self.banker.shelf(to_keep_score)
                 # add dice verification and its quantity
                 # for dice in count_choices: #  roll_score= Counter({2: 2, 5: 1, 6: 1}) count_choices: Counter({5: 1})
-                    # if dice not in [roll_score]:
-                    #     print(roll)
-                    #     print("Cheater!!! Or possibly made a typo...")
-                
+                # if dice not in [roll_score]:
+                #     print(roll)
+                #     print("Cheater!!! Or possibly made a typo...")
+
                 # calculate to dices to keep score
-                print(f'You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining')
-                print(f'(r)oll again, (b)ank your points or (q)uit:')
+                print(
+                    f"You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining"
+                )
+                print(f"(r)oll again, (b)ank your points or (q)uit:")
                 choice = input("> ")
 
-                if choice == 'b' or choice == 'bank':
-                    print(f'You banked {self.banker.shelved} points in round {self.rounds}')
+                if choice == "b" or choice == "bank":
+                    # increment round and reset dices when user banks points.
+                    self.rounds += 1
+                    print(f"Starting round {self.rounds}")
+                    print(
+                        f"You banked {self.banker.shelved} points in round {self.rounds}"
+                    )
                     self.banker.bank()
                     self.amount_of_dice = 6
-                    print(f'Total score is {self.banker.balance} points')
+                    print(f"Total score is {self.banker.balance} points")
 
-                elif choice == 'r' or choice == 'roll':
+                elif choice == "r" or choice == "roll":
                     if len(roll) == 0:
                         print("No dice remaing. Staring over")
                         self.amount_of_dice == 6
                     continue
-
-                elif choice == 'q' or choice == 'quit':
+                        
+                elif choice == "q" or choice == "quit":
                     self.quiter()
                     break
 
-                # These were the print statements we used along the way to ge the code working again 
+                # These were the print statements we used along the way to ge the code working again
                 # print(f'list of respones: {list_of_respones}')
                 # print(len(f'roll: {roll}'))
                 # print(f'old amount of dice: {self.amount_of_dice}')
                 # print(f'new amount of dice: {self.amount_of_dice}')
                 # print(f'score: {score}')
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     run = Game()
     run.play()
-
