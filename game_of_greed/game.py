@@ -85,14 +85,14 @@ class Game:
                 if choice == "b" or choice == "bank":
                     # increment round and reset dices when user banks points.
                     self.rounds += 1
-                    print(f"Starting round {self.rounds}")
                     print(
-                        f"You banked {self.banker.shelved} points in round {self.rounds}"
+                        f"You banked {self.banker.shelved} points in round {self.rounds -1}"
                     )
                     self.banker.bank()
+                    
                     self.amount_of_dice = 6
                     print(f"Total score is {self.banker.balance} points")
-
+                    print(f"Starting round {self.rounds}")
                 elif choice == "r" or choice == "roll":
                     if len(roll) == 0:
                         print("No dice remaing. Staring over")
