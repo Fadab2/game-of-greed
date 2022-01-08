@@ -21,6 +21,12 @@ class Game:
     def decline(self):
         print("OK. Maybe another time")
 
+    def zilch(self):
+       print("****************************************")
+       print("**        Zilch!!! Round over         **")
+       print("****************************************")
+        
+
     def play(self, roller=GameLogic.roll_dice):
         print("Welcome to Game of Greed")
         print("(y)es to play or (n)o to decline")
@@ -34,7 +40,7 @@ class Game:
     def play_game(self, roller):
         print(f"Starting round {self.rounds}")
         while True:
-
+            
             print(f"Rolling {self.amount_of_dice} dice...")
 
             roll = roller(self.amount_of_dice)  # check this out
@@ -47,6 +53,10 @@ class Game:
             print(f"*** {roller_str}***")
             # total current roll score
             roll_score = GameLogic.calculate_score(roll)
+            if roll_score == 0:
+                self.banker.clear_shelf()
+                Game.zilch(roller)
+
             if roll_score > 0:
                 print("Enter dice to keep, or (q)uit:")
                 choice = input("> ")
@@ -56,24 +66,23 @@ class Game:
                 sys.exit(0)
 
             else:
-                list_of_choices = tuple(map(int, list(choice)))
                 roll_counter = Counter(roll)
                 count_choices = Counter(choice)
-                # print(f' roll counter {roll_counter} choice count: {count_choices}')
-                # in_it = roll_counter & count_choices
-                # print(in_it)
-                # if count_choices > roll_counter:
-                #     print("Cheater!!! Or possibly made a typo...")
+                # if not GameLogic.validate_input_dice(roll_counter, count_choices):
+                #      print("Cheater!!! Or possibly made a typo...")
+
+                #list_of_choices = tuple(map(int, list(choice)))
+                if choice.isnumeric():
+                    list_to_tuple = tuple([int(num) for num in choice])
+               
                 
+
                 # print(count_choices)
-                self.amount_of_dice -= len(list_of_choices)
-                to_keep_score = GameLogic.calculate_score(list_of_choices)
+                self.amount_of_dice -= len(choice)
+                to_keep_score = GameLogic.calculate_score(list_to_tuple)
                 self.banker.shelf(to_keep_score)
-                # add dice verification and its quantity
-                # for dice in count_choices: #  roll_score= Counter({2: 2, 5: 1, 6: 1}) count_choices: Counter({5: 1})
-                # if dice not in [roll_score]:
-                #     print(roll)
-                #     print("Cheater!!! Or possibly made a typo...")
+             
+               
 
                 # calculate to dices to keep score
                 print(
@@ -84,21 +93,23 @@ class Game:
 
                 if choice == "b" or choice == "bank":
                     # increment round and reset dices when user banks points.
-                    self.rounds += 1
+                   
                     print(
-                        f"You banked {self.banker.shelved} points in round {self.rounds -1}"
+                        f"You banked {self.banker.shelved} points in round {self.rounds}"
                     )
                     self.banker.bank()
-                    
+                    self.rounds += 1
                     self.amount_of_dice = 6
                     print(f"Total score is {self.banker.balance} points")
                     print(f"Starting round {self.rounds}")
                 elif choice == "r" or choice == "roll":
-                    if len(roll) == 0:
-                        print("No dice remaing. Staring over")
-                        self.amount_of_dice == 6
+                    if self.amount_of_dice == 0:
+                        self.amount_of_dice = 6
+                    # if len(roll) == 0:
+                    #     print("No dice remaing. Staring over")
+                    #     self.amount_of_dice == 6
                     continue
-                        
+
                 elif choice == "q" or choice == "quit":
                     self.quiter()
                     break

@@ -116,6 +116,17 @@ class GameLogic:
             if score != total_score:
                 list_of_scores.append(dice[number])
         return tuple(list_of_scores)
+    
+    def validate_input_dice(dice, input_dices):
+        input_dices_counter = Counter(input_dices)
+        dice_counter = Counter(dice)
+        
+        for key, key_count in input_dices_counter.items(): #1:2 #1:2
+            if key_count > dice_counter[key]:
+                return False
+          
+        return True
+
 
 
 
