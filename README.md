@@ -54,15 +54,27 @@ Finish time: 7:50
 
 Actual time needed to complete: 3hr 8min
 
-Name of feature: Game V3
+Name of feature: Cheating and Zilch
 
 Estimate of time needed to complete: 7hr
 
-Start time: 6:30, 7:30
+Start time: 6:30, 7:30, 2:00
 
-Finish time: 9:30, 10:12
+Finish time: 9:30, 10:12, 5:30
 
-Actual time needed to complete: 5hr 48min
+Actual time needed to complete: 9hr 17min
+
+Name of feature: Bots
+
+Estimate of time needed to complete: 1hr
+
+Start time: 1:20 
+
+Finish time: 2
+
+Actual time needed to complete: 42min
+
+
 
 
 
