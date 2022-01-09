@@ -72,7 +72,7 @@ Start time: 1:20
 
 Finish time: 2
 
-Actual time needed to complete: 40min
+Actual time needed to complete: 42min
 
 
 
