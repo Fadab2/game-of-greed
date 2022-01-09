@@ -7,8 +7,9 @@ from game_of_greed.banker import Banker
 
 
 class Game:
-    def __init__(self):
+    def __init__(self, num_rounds=20):
         self.banker = Banker()
+        self.num_rounds = num_rounds
         self.rounds = 1
         self.amount_of_dice = 6
 
@@ -105,9 +106,12 @@ class Game:
                 keeper_values = GameLogic.validate_keepers(roll, roller_str)
                 to_validate_score = GameLogic.validate_keepers(roll, list_to_tuple)
 
-                # if to_validate_score != True:
-                #     print("Cheater!!! Or possibly made a typo...")
-                #     print(f"*** {roller_str}***")
+                if to_validate_score != True:
+                    print("Cheater!!! Or possibly made a typo...")
+                    print(f"*** {roller_str}***")
+                    print("Enter dice to keep, or (q)uit:")
+                    choice = input("> ")
+
                 # calculate to dices to keep score
                 print(
                     f"You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining"
