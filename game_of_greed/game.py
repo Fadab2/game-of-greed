@@ -17,6 +17,7 @@ class Game:
 
     def quiter(self):
         print(f"Thanks for playing. You earned {self.banker.balance} points")
+        sys.exit
 
     def decline(self):
         print("OK. Maybe another time")
@@ -63,13 +64,13 @@ class Game:
             
             elif roll_score == 0:
                 Game.zilch(roller)
-                self.rounds += 1
                 self.banker.clear_shelf()
                 print(
                         f"You banked {self.banker.shelved} points in round {self.rounds}"
                     )
+                self.rounds += 1
                 print(f"Total score is {self.banker.balance} points")
-                print(f"Starting round {self.rounds + 1}")
+                print(f"Starting round {self.rounds}")
                 self.amount_of_dice = 6
                 continue
 
@@ -81,35 +82,39 @@ class Game:
                 roll_counter = Counter(roll)
                 count_choices = Counter(choice)
 
+                list_to_tuple = tuple([int(num) for num in choice])
                 #list_of_choices = tuple(map(int, list(choice)))
-
-                # keeper_values = []
-                # for char in response:
-                #     if char.isnumeric():
-                #         keeper_values.append(int(char))
                 # list_to_tuple = tuple([int(num) for num in choice])
+
+
                 # choice_to_keep = []
                 # for char in choice:
-                if choice.isnumeric():
-                    list_to_tuple = tuple([int(num) for num in choice])
-                # if GameLogic.validate_keepers(roll_counter, list_to_tuple):
-                #      print("Cheater!!! Or possibly made a typo...")
-               
-                
+                #     if choice.isnumeric():
+                #         choice_to_keep.append(int(char))
+                # if GameLogic.validate_keepers(roll, choice_to_keep):
+                #     return choice_to_keep
+                # else: 
+                #     print("Cheater!!! Or possibly made a typo...")
+                #     print(f"*** {roller_str}***") 
 
                 # print(count_choices)
                 self.amount_of_dice -= len(choice)
                 to_keep_score = GameLogic.calculate_score(list_to_tuple)
                 self.banker.shelf(to_keep_score)
-             
-               
 
+                keeper_values = GameLogic.validate_keepers(roll, roller_str)
+                to_validate_score = GameLogic.validate_keepers(roll, list_to_tuple)
+
+                # if to_validate_score != True:
+                #     print("Cheater!!! Or possibly made a typo...")
+                #     print(f"*** {roller_str}***")
                 # calculate to dices to keep score
                 print(
                     f"You have {self.banker.shelved} unbanked points and {self.amount_of_dice} dice remaining"
                 )
                 print(f"(r)oll again, (b)ank your points or (q)uit:")
                 choice = input("> ")
+
 
                 if choice == "b" or choice == "bank":
                     # increment round and reset dices when user banks points.
@@ -122,26 +127,19 @@ class Game:
                     self.amount_of_dice = 6
                     print(f"Total score is {self.banker.balance} points")
                     print(f"Starting round {self.rounds}")
-                # elif roll_score == 0:
-                #     Game.zilch(roller)
-                #     self.banker.clear_shelf()
-                #     self.rounds + 1
-                #     print(
-                #             f"You banked {self.banker.shelved} points in round {self.rounds}"
-                #         )
-                #     print(f"Total score is {self.banker.balance} points")
                     
                 elif choice == "r" or choice == "roll":
                     if self.amount_of_dice == 0:
                         self.amount_of_dice = 6
-                    # if len(roll) == 0:
-                    #     print("No dice remaing. Staring over")
-                    #     self.amount_of_dice == 6
                     continue
 
                 elif choice == "q" or choice == "quit":
                     self.quiter()
-                    break
+
+
+if __name__ == "__main__":
+    run = Game()
+    run.play()
 
                 # These were the print statements we used along the way to ge the code working again
                 # print(f'list of respones: {list_of_respones}')
@@ -149,35 +147,3 @@ class Game:
                 # print(f'old amount of dice: {self.amount_of_dice}')
                 # print(f'new amount of dice: {self.amount_of_dice}')
                 # print(f'score: {score}')
-
-    def validate_keepers(self, roll, roll_string):
-            """ensures that kept dice are valid for the roll
-
-            Args:
-                roll
-                roll_string
-
-            Returns:
-                valid keeper values
-            """
-            while True:
-                print("Enter dice to keep, or (q)uit:")
-                response = input("> ")
-                if response == "q":
-                    self.end_game()
-                    break
-
-                keeper_values = []
-                for char in response:
-                    if char.isnumeric():
-                        keeper_values.append(int(char))
-
-                if GameLogic.validate_keepers(roll, keeper_values):
-                    return keeper_values
-                else:
-                    print("Cheater!!! Or possibly made a typo...")
-                    print(f"*** {roll_string} ***")
-
-if __name__ == "__main__":
-    run = Game()
-    run.play()
